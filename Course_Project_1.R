@@ -28,7 +28,7 @@ str(datasets)
 
 # chart 1 -. coursera
 hist(datasets$Global_active_power, col='red', xlab='Global Active Power(kilowatts)', main='Global Active Power')
-dev.copy(png, file='./figure/plot1.png')
+dev.copy(png, file='./plot1.png')
 dev.off()
 
 
@@ -41,7 +41,7 @@ str(datasets)
 # chart 2 -. coursera
 plot(datasets$dateTime, datasets$Global_active_power, type='l', ylab='Global Active Power(kilowatts)', xlab='')
 
-dev.copy(png, file='./figure/plot2.png')
+dev.copy(png, file='./plot2.png')
 dev.off()
 
 # chart 3 -. coursera
@@ -50,7 +50,7 @@ lines(datasets$dateTime, datasets$Sub_metering_2, col='red')
 lines(datasets$dateTime, datasets$Sub_metering_3, col='blue')
 legend('topright', legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), col=c('black', 'red', 'blue'), pch='ㅡ')
 
-dev.copy(png, file='./figure/plot3.png')
+dev.copy(png, file='./plot3.png')
 dev.off()
 
 # chart 4 -. coursera
@@ -66,5 +66,5 @@ legend('topright', legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"
 
 plot(datasets$dateTime, datasets$Global_reactive_power, type='l', ylab='Global_reactive_power', xlab='datetime')
 
-dev.copy(png, file='./figure/plot4.png')
+dev.copy(png, file='./plot4.png')
 dev.off()
