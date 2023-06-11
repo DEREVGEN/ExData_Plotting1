@@ -14,15 +14,19 @@ library(dplyr)
 # filtering date in 2007-2-1 ~ 2007-2-2
 datasets <- datasets %>% filter(Date=="1/2/2007" | Date=="2/2/2007")
 
-head(datasets)
-View(datasets)
-
 # chage column type to Date type
 datasets$Date <- as.Date(datasets$Date, format='%d/%m/%Y')
 View(datasets)
 str(datasets)
 
-# chart 1 -. coursera
-hist(datasets$Global_active_power, col='red', xlab='Global Active Power(kilowatts)', main='Global Active Power')
-dev.copy(png, file='./plot1.png')
+library(lubridate)
+
+datasets$dateTime <- as_datetime(paste(datasets$Date, datasets$Time))
+datasets$dateTime
+str(datasets)
+
+# chart 2 -. coursera
+plot(datasets$dateTime, datasets$Global_active_power, type='l', ylab='Global Active Power(kilowatts)', xlab='')
+
+dev.copy(png, file='./plot2.png')
 dev.off()

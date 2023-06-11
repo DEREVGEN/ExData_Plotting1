@@ -22,7 +22,16 @@ datasets$Date <- as.Date(datasets$Date, format='%d/%m/%Y')
 View(datasets)
 str(datasets)
 
-# chart 1 -. coursera
-hist(datasets$Global_active_power, col='red', xlab='Global Active Power(kilowatts)', main='Global Active Power')
-dev.copy(png, file='./plot1.png')
+
+library(lubridate)
+
+datasets$dateTime <- as_datetime(paste(datasets$Date, datasets$Time))
+
+# chart 3 -. coursera
+plot(datasets$dateTime, datasets$Sub_metering_1, type='l', ylab='Energy sub metering')
+lines(datasets$dateTime, datasets$Sub_metering_2, col='red')
+lines(datasets$dateTime, datasets$Sub_metering_3, col='blue')
+legend('topright', legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), col=c('black', 'red', 'blue'), pch='ㅡ')
+
+dev.copy(png, file='./plot3.png')
 dev.off()
